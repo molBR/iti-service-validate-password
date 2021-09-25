@@ -1,0 +1,28 @@
+application:
+  title: Servico de validacao de senha
+  description: 'Esta API e responsavel pela validacao dos criterios de aceite de um senha valida
+    - 9 caracteres
+    - 1 digito
+    - 1 letra minuscula
+    - 1 letra maiscula
+    - 1 caractere especial possiveis: !@#$%^&*()-+
+    - Nao possuir caracteres repetidos dentro do conjunto'
+
+validate:
+  password:
+    minimum:
+      length: 9
+    characterSpecial: '!@#$%^&*()-+'
+
+server:
+  port: 8081
+  servlet:
+    context-path: /iti
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: method
+
