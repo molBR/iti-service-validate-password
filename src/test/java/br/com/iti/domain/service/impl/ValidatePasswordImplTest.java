@@ -30,7 +30,7 @@ public class ValidatePasswordImplTest {
         String password = "Abc380#v@1B";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(true));
+                .andExpect(jsonPath("valid_password").value(true));
     }
 
     @Test
@@ -62,8 +62,8 @@ public class ValidatePasswordImplTest {
         String password = "";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasSpaceCharacter").value(true));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_space_character").value(true));
     }
 
     @Test
@@ -72,8 +72,8 @@ public class ValidatePasswordImplTest {
         String password = "Xazc0 a98XcWm";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasSpaceCharacter").value(true));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_space_character").value(true));
     }
 
     @Test
@@ -82,8 +82,8 @@ public class ValidatePasswordImplTest {
         String password = "AbcD";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasDigit").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_digit").value(false));
     }
 
     @Test
@@ -92,9 +92,9 @@ public class ValidatePasswordImplTest {
         String password = "12345";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasLetterUpper").value(false))
-                .andExpect(jsonPath("hasLetterLower").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_letter_upper").value(false))
+                .andExpect(jsonPath("has_letter_lower").value(false));
     }
 
     @Test
@@ -103,8 +103,8 @@ public class ValidatePasswordImplTest {
         String password = "Ab$20zX";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasLengthCharacter").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_length_character").value(false));
     }
 
     @Test
@@ -113,8 +113,8 @@ public class ValidatePasswordImplTest {
         String password = "abcd321efg0";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasLetterUpper").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_letter_upper").value(false));
     }
 
     @Test
@@ -123,8 +123,8 @@ public class ValidatePasswordImplTest {
         String password = "ABCDE3520#WX";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasLetterLower").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_letter_lower").value(false));
     }
 
     @Test
@@ -133,8 +133,8 @@ public class ValidatePasswordImplTest {
         String password = "Abc0042FG21";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasSpecialCharacter").value(false));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_special_character").value(false));
     }
 
     @Test
@@ -143,8 +143,8 @@ public class ValidatePasswordImplTest {
         String password = "AbcA";
         mockMvc.perform(post("/api/v1/valid").contentType(MediaType.APPLICATION_JSON).header("password", password))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("validPassword").value(false))
-                .andExpect(jsonPath("hasRepeatedCharacter").value(true));
+                .andExpect(jsonPath("valid_password").value(false))
+                .andExpect(jsonPath("has_repeated_character").value(true));
     }
 
 }
