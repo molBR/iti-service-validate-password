@@ -3,9 +3,9 @@ package br.com.iti.domain.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 @Builder
 @JsonPropertyOrder(value = {"valid_password", "has_length_character","has_digit","has_letter_upper",
         "has_letter_lower","has_special_character","has_repeated_character","has_space_character"})

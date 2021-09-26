@@ -1,8 +1,11 @@
 package br.com.iti.domain.service.impl;
 
+import br.com.iti.domain.model.ResponseDTO;
+import br.com.iti.domain.service.ValidatePasswordService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -24,6 +28,23 @@ public class ValidatePasswordImplTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private ValidatePasswordService ValidatePasswordImpl;
+
+    @Test
+    void shouldReturnTrue_whenServiceReceiveStringIsValid() {
+
+        ResponseDTO validate = ValidatePasswordImpl.validate("Abc380#v@1B");
+        assertTrue(validate.getValidPassword());
+    }
+
+    @Test
+    void shouldReturnTrue_whenServiceReceiveStringIsNotValid(){
+
+        ResponseDTO validate = ValidatePasswordImpl.validate("Abc380 v 1B");
+        assertFalse(validate.getValidPassword());
+    }
+
     @Test
     void shouldReturnTrue_whenStringIsValid() throws Exception {
 
@@ -34,7 +55,7 @@ public class ValidatePasswordImplTest {
     }
 
     @Test
-    void shouldReturnException_whenStringIsNull() throws Exception {
+    void shouldReturnException_whenStringIsNull()  {
 
         String password = null;
         Exception ex = Assertions.assertThrows(IllegalArgumentException.class, () ->{
@@ -146,5 +167,6 @@ public class ValidatePasswordImplTest {
                 .andExpect(jsonPath("valid_password").value(false))
                 .andExpect(jsonPath("has_repeated_character").value(true));
     }
+
 
 }

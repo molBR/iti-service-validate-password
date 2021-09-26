@@ -21,6 +21,7 @@ public class ValidatePasswordServicedImpl implements ValidatePasswordService {
     public ResponseDTO validate(String password) {
 
         ResponseDTO response = ResponseDTO.builder()
+                .validPassword(false)
                 .hasLengthCharacter(hasLengthCharacter(password))
                 .hasDigit(hasDigit(password))
                 .hasLetterUpper(hasLetterUpper(password))
@@ -35,13 +36,13 @@ public class ValidatePasswordServicedImpl implements ValidatePasswordService {
     }
 
     private Boolean hasRepeatedCharacter(String password) {
-        String read = "";
+        StringBuilder read = new StringBuilder();
         for (int i = 0; i < password.length(); i++) {
             char charAt = password.charAt(i);
-            if(read.indexOf(charAt) != -1){
+            if(read.toString().indexOf(charAt) != -1){
                 return true;
             }
-            read += charAt;
+            read.append(charAt);
         }
         return false;
     }

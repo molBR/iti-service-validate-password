@@ -10,6 +10,7 @@ Esta aplicação foi desenvolvida utilizando os componentes listados abaixo:
 * [Spring Boot 2.5.5](https://spring.io/projects/spring-boot)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#boot-features-developing-web-applications)
 * [Swagger - Open API](https://swagger.io/tools/open-source/getting-started/)
+* [Jacoco - Code Coverage](https://www.jacoco.org/jacoco/trunk/doc/mission.html)
 
 ### Repositório
 
@@ -37,12 +38,40 @@ cd c:\<SUA_WORKSPACE>\iti-service-validate-password
 ````
 mvn clean install
 ````
-* Execute a instrução abaixo para iniciar o serviço da aplicação
+* Executar a instrução abaixo para iniciar o serviço da aplicação
 ````
 mvn spring-boot:run
 ````
 
-### Testando
+### Testes e Análise da Cobertura de Código
+Para esta API foi implementada o **Jacoco** como recurso de analise e cobertura de teste do código 
+
+Os testes integrados da aplicação foram escritos utilizando **JUnit**. A idéia de fato foi testar 
+a aplicação utilizando o MockMvc para disponibilizar um recurso http para teste do controller.
+
+Para executar os testes, siga os passos abaixo:
+
+* Abra seu terminal (Prompt de Comando, PowerShell ou Git Bash)
+* Acesar a pasta do projeto, conforme:
+````
+cd c:\<SUA_WORKSPACE>\iti-service-validate-password
+````
+* Executar a instrução abaixo para iniciar os testes
+````
+mvn clean test
+````
+
+Após a execução dos testes, o relatório poderá ser conferido em: 
+````
+C:\<SUA_WORKSPACE>\iti-service-validate-password\target\site\jacoco\index.html
+````
+
+Foram realizados 14 testes e a cobertura de código para a classe de negócio é de 100% 
+e para a aplicação ficou em 93%.
+
+
+
+### Acessando Documentação e Testando o Endpoint
 
 Com o serviço rodando, seguindo os passos anteriores, acesse o link do Swagger através da URL [http://localhost:8081/iti/swagger-ui.html](http://localhost:8081/iti/swagger-ui.html)
 
