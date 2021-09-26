@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class ValidateController {
             @ApiResponse(responseCode = "400", description = "É requerido o header 'password' na requisição.",
                     content = @Content)})
     @PostMapping(value = "valid", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public ResponseDTO valid(@RequestHeader String password){
         return validatePassword.validate(password);
     }

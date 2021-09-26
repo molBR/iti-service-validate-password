@@ -32,7 +32,7 @@ ou através da instrução abaixo:
 ````
 cd c:\<SUA_WORKSPACE>\iti-service-validate-password
 ````
-(Certifique-se que o Maven esteja instalado e incluído nas variaveis de ambiente)
+(Certifique-se que o Maven esteja instalado e incluído no Path das variáveis de ambiente)
 * Executar a instrução abaixo para o Maven baixar as dependências e criar o build do projeto
 ````
 mvn clean install
@@ -44,4 +44,71 @@ mvn spring-boot:run
 
 ### Testando
 
-Acesse a url [http://localhost:8081/iti/swagger-ui.html](http://localhost:8081/iti/swagger-ui.html)
+Com o serviço rodando, acesse o Swagger através da URL [http://localhost:8081/iti/swagger-ui.html](http://localhost:8081/iti/swagger-ui.html)
+
+A documentação da API para Validação de Senha estará disponível no swagger, conforme acesso da URL acima informado.
+
+Através desta mesma URL será possível testar a API, seguindo os passos:
+
+* validate-controller -> POST /api/v1/valid (clique nesta opção para expandir a tela)
+* clique em 'Try it out' (botão ao lado direito)
+* No header tem a opção 'password', este campo é de preenchimento obrigatório. 
+* Após informar uma senha, clique em 'Execute'.
+* Se a senha for válida, você receberá no json a proriedade "valid_password" como 'true', do contrário como 'false'
+
+#### Adicional 
+
+Nesta implementação, foi adicionada a ocorrência por regra que não esta ou não válida, como por exemplo: Tem caracter especial ? Sim/Não
+
+Esta opção foi incluída como forma de mostrar ao consumidor desta API qual dos critérios de aceite não foi satisfeito para que uma senha possa ser válida.
+
+```
+Response Body
+
+{
+  "valid_password": false, 
+  "has_length_character": false,
+  "has_digit": false,
+  "has_letter_upper": false,
+  "has_letter_lower": true,
+  "has_special_character": false,
+  "has_repeated_character": true,
+  "has_space_character": false
+}
+```
+
+### Considerações
+
+Na construção desta API, 
+foi utilizado o framework Spring boot para disponibilizar os recusos web rodar facilmente o serviço desta API. 
+Recursos da própria linguagem Java, como a API Stream, que foi utilizada para facilitar a implementação das regras de validação de uma string assim como também a iteração funcional.
+
+
+Para o endpoint de validação:
+
+* **REQUEST**, o consumidor da API deverá enviar o 'password' no header.
+
+* **RESPONSE**, retornará se o password contém uma string válida para uma senha e quais foram os critérios de aceite utilizados para a validação. 
+
+
+Na parte de documentação,
+foi utilizado o swagger para que além da documentação da API, poder disponibilizar o recurso 
+de teste do enpoint assim como também o contrato de consumo.
+
+O projeto, 
+a estrutura de package foi origanizado pelo domain e separada por atribuições de classes.
+
+A classe **'ValidatePasswordServiceImpl'**
+foi implementada a partir do contrato de validação de senha. 
+Esta classe é de suma importância para a validação dos critérios de aceite de uma string de senha válida. 
+Ou seja, esta classe tem uma única reponsabilidade: a validar a string senha.
+
+O Lombok,
+foi um recurso para designer Builder além dos recursos de getters, setters, toString, equals pelas anotations @Builder e @Data, respectivamente.
+
+Application.yml
+contém informações de descritivo da API para consumo do Swagger assim como da aplicação, como por exemplo a porta em que o serviço vai rodar.
+
+Como mencionado no item **'Adicional'**, optei por além de retornar se a senha é válida, também retornar os critérios avaliados.
+
+Por fim, a experiência de construir esta API foi muito enriquecedora e com certeza, como tudo o que faço, me trouxe bons conhecimentos pois o loop de aprendizado é infinito pra mim!
