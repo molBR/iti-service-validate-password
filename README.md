@@ -44,7 +44,7 @@ mvn spring-boot:run
 
 ### Testando
 
-Com o serviço rodando, acesse o Swagger através da URL [http://localhost:8081/iti/swagger-ui.html](http://localhost:8081/iti/swagger-ui.html)
+Com o serviço rodando, seguindo os passos anteriores, acesse o link do Swagger através da URL [http://localhost:8081/iti/swagger-ui.html](http://localhost:8081/iti/swagger-ui.html)
 
 A documentação da API para Validação de Senha estará disponível no swagger, conforme acesso da URL acima informado.
 
@@ -58,7 +58,8 @@ Através desta mesma URL será possível testar a API, seguindo os passos:
 
 #### Adicional 
 
-Nesta implementação, foi adicionada a ocorrência por regra que não esta ou não válida, como por exemplo: Tem caracter especial ? Sim/Não
+Nesta implementação, foi adicionada a ocorrência por regra que esta ou não válida, 
+como por exemplo: Tem caractere especial ? Sim/Não, através da elemento **"has_special_character": true**
 
 Esta opção foi incluída como forma de mostrar ao consumidor desta API qual dos critérios de aceite não foi satisfeito para que uma senha possa ser válida.
 
@@ -81,7 +82,7 @@ Response Body
 
 Na construção desta API, 
 foi utilizado o framework Spring boot para disponibilizar os recusos web rodar facilmente o serviço desta API. 
-Recursos da própria linguagem Java, como a API Stream, que foi utilizada para facilitar a implementação das regras de validação de uma string assim como também a iteração funcional.
+Recursos da própria linguagem Java, como a API Stream, foram utilizados para facilitar a implementação das regras de validação de uma string assim como também a iteração funcional.
 
 
 Para o endpoint de validação:
@@ -93,7 +94,7 @@ Para o endpoint de validação:
 
 Na parte de documentação,
 foi utilizado o swagger para que além da documentação da API, poder disponibilizar o recurso 
-de teste do enpoint assim como também o contrato de consumo.
+de teste do enpoint assim como também o contrato para consumo (Request/Response).
 
 O projeto, 
 a estrutura de package foi origanizado pelo domain e separada por atribuições de classes.
