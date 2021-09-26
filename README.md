@@ -110,6 +110,7 @@ foi um recurso para designer Builder além dos recursos de getters, setters, toS
 Application.yml
 contém informações de descritivo da API para consumo do Swagger assim como da aplicação, como por exemplo a porta em que o serviço vai rodar.
 
-Como mencionado no item **'Adicional'**, optei por além de retornar se a senha é válida, também retornar os critérios avaliados.
+Como mencionado no item **'Adicional'**, optei por além de retornar se a senha é válida, também retornar os critérios avaliados. 
+Isso ajudará o usuário final a identificar facilmente qual dos critérios avaliados não foi informado corretamente na elaboração de sua senha.
 
 Por fim, a experiência de construir esta API foi muito enriquecedora e com certeza, como tudo o que faço, me trouxe bons conhecimentos pois o loop de aprendizado é infinito pra mim!
