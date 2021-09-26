@@ -37,9 +37,11 @@ public class ApplicationConfig {
     public OpenAPI springShopOpenAPI(){
         log.info("Acesse SwaggerUi " + "http://localhost:"+port+contextPath+swaggerUiPath);
         return new OpenAPI()
-                .info(new Info().title(convertEncondeUTF8(title))
-                        .description("Olá ação")
+                .info(new Info()
+                        .title(convertEncondeUTF8(title))
+                        .description(convertEncondeUTF8(description))
                         .version("v0.0.1")
+                        .termsOfService("http://swagger.io/terms/")
                         .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
 

@@ -24,12 +24,12 @@ public class ValidateController {
         this.validatePassword = validatePassword;
     }
 
-    @Operation(summary = "Check String password is valid.")
+    @Operation(summary = "Verifica se uma senha é válida.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Password validated successfully!",
+            @ApiResponse(responseCode = "200", description = "Resposta recebida com sucesso",
                     content = { @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
                             schema = @Schema(implementation = ResponseDTO.class)) }),
-            @ApiResponse(responseCode = "400", description = "Required request header 'password' for method parameter type String is not present",
+            @ApiResponse(responseCode = "400", description = "É requerido o header 'password' na requisição.",
                     content = @Content)})
     @PostMapping(value = "valid", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseDTO valid(@RequestHeader String password){

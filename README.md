@@ -19,7 +19,7 @@ workspace local utilizando a instrução abaixo:
 (Certifique-se que o Git esteja instalado)
 * Abra seu terminal (Prompt de Comando, PowerShell ou Git Bash)
 ```
-git clone https://github.com/lcsjr-s23/iti-service-validate-password.git
+git clone https://github.com/lcsjr/iti-service-validate-password.git
 ```
 
 ### Iniciar a Aplicação

@@ -1,12 +1,15 @@
 application:
-  title: Servico de validacao de senha
-  description: 'Esta API e responsavel pela validacao dos criterios de aceite de um senha valida
-    - 9 caracteres
-    - 1 digito
-    - 1 letra minuscula
-    - 1 letra maiscula
-    - 1 caractere especial possiveis: !@#$%^&*()-+
-    - Nao possuir caracteres repetidos dentro do conjunto'
+  title: Validação de senha
+  description: |
+    Esta API é responsável pela validação dos critérios de aceite para que uma string de senha seja válida
+      - Nove ou mais caracteres
+      - Ao menos 1 dígito
+      - Ao menos 1 letra mínuscula
+      - Ao menos 1 letra maíscula
+      - Ao menos 1 caractere especial
+        - Considere como especial os seguintes caracteres: !@#$%^&*()-+
+      - Não possuir caracteres repetidos dentro do conjunto
+      - Espaços em branco não devem ser considerados como caracteres válidos
 
 validate:
   password:
