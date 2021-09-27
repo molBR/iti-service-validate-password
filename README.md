@@ -33,14 +33,13 @@ ou através da instrução abaixo:
 ````
 cd c:\<SUA_WORKSPACE>\iti-service-validate-password
 ````
-(Certifique-se que o Maven esteja instalado e incluído no Path das variáveis de ambiente)
 * Executar a instrução abaixo para o Maven baixar as dependências e criar o build do projeto
 ````
-mvn clean install
+./mvnw clean package
 ````
 * Executar a instrução abaixo para iniciar o serviço da aplicação
 ````
-mvn spring-boot:run
+./mvnw spring-boot:run
 ````
 
 ### Testes e Análise da Cobertura de Código
@@ -58,7 +57,7 @@ cd c:\<SUA_WORKSPACE>\iti-service-validate-password
 ````
 * Executar a instrução abaixo para iniciar os testes
 ````
-mvn clean test
+./mvnw clean test
 ````
 
 Após a execução dos testes, o relatório poderá ser conferido em: 
